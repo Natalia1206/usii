@@ -485,7 +485,6 @@ const cb = (r) => {
   },
   O5 = ({
     title: r,
-    company: i,
     items: a,
     total: s,
     id: c,
@@ -498,50 +497,36 @@ const cb = (r) => {
       children: [
         Ct.jsxs("div", {
           id: `${c}-main`,
-          className: "px-10 py-8 bg-white",
+          className: "invoice-document",
           children: [
-            Ct.jsxs("div", {
-              className: "text-center mb-5",
+            Ct.jsxs("header", {
+              className: "invoice-header",
               children: [
-                Ct.jsx("h1", {
-                  className:
-                    "text-[26px] font-bold tracking-wide leading-tight mb-1",
-                  children: r,
+                Ct.jsx("div", {
+                  className: "invoice-brand",
+                  children: Ct.jsx("img", {
+                    src: new URL("./invoice-logo.png", import.meta.url).href,
+                    alt: "獻策顧問有限公司",
+                  }),
                 }),
-                Ct.jsx("h2", {
-                  className:
-                    "text-base text-gray-700 tracking-wide leading-tight",
-                  children: i,
-                }),
+                Ct.jsx("h1", { children: r }),
               ],
             }),
-            Ct.jsx("hr", { className: "border-t border-gray-400 mb-5" }),
             Ct.jsxs("table", {
-              className:
-                "w-full text-left border-collapse border border-gray-300 text-[14px]",
               children: [
                 Ct.jsx("thead", {
                   children: Ct.jsxs("tr", {
-                    className: "bg-[#e5e7eb]",
                     children: [
                       Ct.jsx("th", {
-                        className:
-                          "p-2.5 border border-gray-300 w-[40%] font-semibold",
                         children: "項目",
                       }),
                       Ct.jsx("th", {
-                        className:
-                          "p-2.5 border border-gray-300 w-[10%] text-center font-semibold",
                         children: "數量",
                       }),
                       Ct.jsxs("th", {
-                        className:
-                          "p-2.5 border border-gray-300 w-[20%] text-right font-semibold",
                         children: ["含稅價", Ct.jsx("br", {}), "(NT$/元)"],
                       }),
                       Ct.jsx("th", {
-                        className:
-                          "p-2.5 border border-gray-300 w-[30%] font-semibold",
                         children: "備註",
                       }),
                     ],
@@ -553,26 +538,17 @@ const cb = (r) => {
                       Ct.jsxs(
                         "tr",
                         {
-                          className: "border-b border-gray-300",
                           children: [
                             Ct.jsx("td", {
-                              className:
-                                "p-2.5 border-x border-gray-300 font-medium whitespace-pre-wrap leading-snug",
                               children: p.name,
                             }),
                             Ct.jsx("td", {
-                              className:
-                                "p-2.5 border-x border-gray-300 text-center",
                               children: p.qty,
                             }),
                             Ct.jsx("td", {
-                              className:
-                                "p-2.5 border-x border-gray-300 text-right font-medium",
                               children: p.price.toLocaleString("en-US"),
                             }),
                             Ct.jsx("td", {
-                              className:
-                                "p-2.5 border-x border-gray-300 whitespace-pre-wrap text-sm leading-snug break-all",
                               children: cb(p.note),
                             }),
                           ],
@@ -581,22 +557,17 @@ const cb = (r) => {
                       ),
                     ),
                     Ct.jsxs("tr", {
-                      className: "border-b border-gray-300 bg-gray-50",
+                      className: "invoice-subtotal",
                       children: [
                         Ct.jsx("td", {
-                          className: "p-2.5 border-x border-gray-300 font-bold",
                           children: "小計",
                         }),
                         Ct.jsx("td", {
-                          className: "p-2.5 border-x border-gray-300",
                         }),
                         Ct.jsx("td", {
-                          className:
-                            "p-2.5 border-x border-gray-300 text-right font-bold",
                           children: s.toLocaleString("en-US"),
                         }),
                         Ct.jsx("td", {
-                          className: "p-2.5 border-x border-gray-300",
                         }),
                       ],
                     }),
@@ -604,35 +575,26 @@ const cb = (r) => {
                 }),
               ],
             }),
-            Ct.jsxs("div", {
-              className: "mt-10 border border-gray-300 break-inside-avoid",
+            Ct.jsxs("section", {
+              className: "invoice-confirmation",
               children: [
-                Ct.jsx("div", {
-                  className:
-                    "bg-[#e5e7eb] p-2 text-center text-sm tracking-wide font-semibold border-b border-gray-300",
-                  children: "客戶確認",
+                Ct.jsxs("div", {
+                  children: [
+                    Ct.jsx("h2", { children: "獻策顧問" }),
+                    Ct.jsx("p", { children: "聯絡人：周依潔" }),
+                    Ct.jsx("p", { children: "聯絡手機：0915-271832" }),
+                    Ct.jsx("p", { children: "聯絡信箱：natalia@x3advisory.com" }),
+                    Ct.jsxs("p", {
+                      children: ["彙整日期：", new Date().toLocaleDateString("zh-TW")],
+                    }),
+                  ],
                 }),
                 Ct.jsxs("div", {
-                  className: "p-4 grid grid-cols-2 gap-4 h-32",
                   children: [
-                    Ct.jsxs("div", {
-                      className: "text-sm space-y-1",
-                      children: [
-                        Ct.jsx("p", { children: "聯絡人：周依潔" }),
-                        Ct.jsx("p", { children: "聯絡手機：0915-271832" }),
-                        Ct.jsx("p", {
-                          children: "聯絡信箱：natalia@x3advisory.com",
-                        }),
-                        Ct.jsxs("p", {
-                          children: [
-                            "彙整日期：",
-                            new Date().toLocaleDateString("zh-TW"),
-                          ],
-                        }),
-                      ],
-                    }),
+                    Ct.jsx("h2", { children: "客戶確認" }),
                     Ct.jsx("div", {
-                      className: "border-l border-gray-300 pl-4",
+                      className: "invoice-signature",
+                      "aria-label": "簽核空間",
                     }),
                   ],
                 }),
@@ -671,6 +633,7 @@ const cb = (r) => {
           }),
       ],
     });
+const invoiceTitles = { SPC: "SPC順昶塑膠請款明細", STC: "STC順昶先進請款明細" };
 function fb() {
   const [r, i] = ei.useState(() => {
       const X = localStorage.getItem("invoiceData");
@@ -843,7 +806,7 @@ function fb() {
               (Y("找不到請款單元素"), u(null));
               return;
             }
-            (R.classList.add("pdf-export"), I && I.classList.add("pdf-export"));
+            (R.classList.add("invoice-pdf"), I && I.classList.add("pdf-export"));
             const rt = 2,
               T = 5,
               M = 8,
@@ -853,6 +816,8 @@ function fb() {
               q = P.internal.pageSize.getHeight(),
               tt = et - M * 2,
               it = q - T - O,
+              mainMargin = 5,
+              mainWidth = et - mainMargin * 2,
               yt = async (N) => {
                 const z = N.clientWidth * rt,
                   $ = N.clientHeight * rt,
@@ -906,34 +871,25 @@ function fb() {
                     N.width,
                     ot,
                   ));
-                const Lt = (ot / N.width) * tt;
+                const Lt = (ot / N.width) * mainWidth;
                 P.addImage(
                   pt.toDataURL("image/jpeg", 0.98),
                   "JPEG",
-                  M,
+                  mainMargin,
                   T,
-                  tt,
+                  mainWidth,
                   Lt,
                 );
               },
               F = async () => {
                 const N = await yt(R),
-                  z = R.querySelector("table"),
-                  $ = new Set([0, N.height]);
-                if (z) {
-                  const Lt = Array.from(z.querySelectorAll("tr")),
-                    zt = z.offsetTop * rt;
-                  ($.add(Math.round(zt)),
-                    Lt.forEach((Ht) => {
-                      const Ft = Ht,
-                        Xt = (Ft.offsetTop + Ft.offsetHeight) * rt;
-                      $.add(Math.round(Xt));
-                    }));
+                  top = R.getBoundingClientRect().top,
+                  breaks = [0, N.height];
+                for (const row of R.querySelectorAll("tr")) {
+                  breaks.push(Math.round((row.getBoundingClientRect().bottom - top) * rt));
                 }
-                const nt = Array.from($)
-                    .filter((Lt) => Lt >= 0 && Lt <= N.height)
-                    .sort((Lt, zt) => Lt - zt),
-                  ot = (it / tt) * N.width;
+                const nt = breaks.sort((a, b) => a - b),
+                  ot = (it / mainWidth) * N.width;
                 let pt = 0,
                   gt = !0;
                 for (; pt < N.height - 1;) {
@@ -968,9 +924,10 @@ function fb() {
                     z < 6 && (P.addPage(), (z = it)));
                 }
               };
-            (await F(),
+            (P.setProperties({ title: invoiceTitles[X] }),
+              await F(),
               await _(),
-              P.save(`${r.month}_${X}請款單.pdf`),
+              P.save(`${invoiceTitles[X]}.pdf`),
               Y(null));
           } catch (R) {
             (console.error("Print error:", R),
@@ -982,7 +939,7 @@ function fb() {
               I = document.getElementById(
                 `invoice-${X.toLowerCase()}-attachments`,
               );
-            (R && R.classList.remove("pdf-export"),
+            (R && R.classList.remove("invoice-pdf"),
               I && I.classList.remove("pdf-export"),
               u(null));
           }
@@ -1449,8 +1406,7 @@ function fb() {
                 children: [
                   Ct.jsx(O5, {
                     id: "invoice-spc",
-                    title: "順昶塑膠SPC請款明細",
-                    company: "獻策顧問有限公司",
+                    title: invoiceTitles.SPC,
                     items: Nt.items,
                     total: Nt.total,
                     hiddenOnPrint: c === "STC",
@@ -1458,8 +1414,7 @@ function fb() {
                   }),
                   Ct.jsx(O5, {
                     id: "invoice-stc",
-                    title: "順昶塑膠STC請款明細",
-                    company: "獻策顧問有限公司",
+                    title: invoiceTitles.STC,
                     items: Dt.items,
                     total: Dt.total,
                     hiddenOnPrint: c === "SPC",
